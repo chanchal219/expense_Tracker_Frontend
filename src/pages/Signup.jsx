@@ -25,7 +25,7 @@ setSignupInfo(copySignupInfo)
             return handleError('name,email and password are required')
          }
          try{
-           const url="http://localhost:8080/auth/signup";
+           const url="https://expense-tracker-backend-266h.onrender.com/auth/signup";
 const response= await fetch(url,{
     method:"POST",
     headers:{
