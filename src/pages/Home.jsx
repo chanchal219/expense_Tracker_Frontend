@@ -19,7 +19,8 @@ const Home = () => {
 
   useEffect(() => {
     const amounts = expenses.map((item) => item.amount);
-    console.log(amounts);
+    console.log('amount',amounts);
+    console.log('expenses',expenses);
 
     const income = amounts
       .filter((item) => item > 0)
@@ -39,9 +40,8 @@ const Home = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("loggedInUser");
     handleSuccess("User logged out");
-    setTimeout(() => {
       navigate("/login");
-    }, 1000);
+  
   };
   const fetchExpenses = async () => {
     try {
@@ -63,6 +63,7 @@ const Home = () => {
   };
 
   const addExpenses = async (data) => {
+    
     try {
       const url = "https://expense-tracker-backend-266h.onrender.com/expenses";
       const headers = {
