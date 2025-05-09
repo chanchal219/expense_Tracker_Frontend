@@ -5,6 +5,7 @@ import { handleError, handleSuccess } from "../utils";
 import ExpensesTable from "./ExpensesTable";
 import ExpenseTrackerForm from "./ExpenseTrackerForm";
 import ExpenseDetails from "./ExpenseDetails";
+import './Home.css'
 
 const Home = () => {
   const [loggedInUser, setLoggedInUser] = useState("");
@@ -114,21 +115,50 @@ const Home = () => {
       handleError(err);
     }
   };
+  // return (
+
+  //   <div>
+  //     <div className="user-section">
+  //       <h1>{loggedInUser}</h1>
+  //       <button onClick={handleLogout}>Logout</button>
+  //     </div>
+  //     <ExpenseDetails incomeAmt={incomeAmt} expenseAmt={expenseAmt} />
+  //     <ExpenseTrackerForm addExpenses={addExpenses} />
+  //     <ExpensesTable
+  //       expenses={expenses}
+  //       handleDeleteExpense={handleDeleteExpense}
+  //     />
+  //     <ToastContainer />
+  //   </div>
+  // );
+
+
   return (
-    <div>
-      <div className="user-section">
-        <h1>{loggedInUser}</h1>
-        <button onClick={handleLogout}>Logout</button>
+    <div className="home-container">
+      <div className="home-card">
+        <div className="home-header">
+          <h1 className="username">Welcome, {loggedInUser}</h1>
+          <button className="logout-btn" onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
+
+        <ExpenseDetails incomeAmt={incomeAmt} expenseAmt={expenseAmt} />
+
+        <ExpenseTrackerForm addExpenses={addExpenses} />
+
+        <ExpensesTable
+          expenses={expenses}
+          handleDeleteExpense={handleDeleteExpense}
+        />
       </div>
-      <ExpenseDetails incomeAmt={incomeAmt} expenseAmt={expenseAmt} />
-      <ExpenseTrackerForm addExpenses={addExpenses} />
-      <ExpensesTable
-        expenses={expenses}
-        handleDeleteExpense={handleDeleteExpense}
-      />
+
       <ToastContainer />
     </div>
   );
 };
+
+
+
 
 export default Home;
